@@ -19,42 +19,59 @@ public class Quanli {
         danhBa.inputInfo();
         danhBaList.add(danhBa);
     }
+
     //cập nhật
-    public void repairDanhba(){
+    public int repairDanhba(){
+        int index=-1;
         Scanner scanner=new Scanner(System.in);
         System.out.println("Nhập số điện thoại mà bạn muốn sửa:");
         String phone=scanner.nextLine();
-        for (DanhBa danhBa:danhBaList){
-            if (danhBa.getNumberphone().equals(phone)){
-                danhBa.inputInfo();
-            } else System.out.println("Không thấy số điện thoại trên");
+        for (int i=0;i<danhBaList.size();i++){
+            if (danhBaList.get(i).getNumberphone().equals(phone)){
+               index=i;
+                danhBaList.get(i).inputInfo();
+            }
 
 
         }
+        if (index==-1){
+            System.out.println("Không tìm thấy số điện thoại trên");
+        }
+        return index;
     }
 
     //xóa
-    public void removeDanhba(){
+    public int removeDanhba(){
+        int index=-1;
         Scanner scanner=new Scanner(System.in);
         System.out.println("Nhập số điện thoại mà bạn muốn xóa:");
         String phone=scanner.nextLine();
-        for (DanhBa danhBa:danhBaList){
-            if (danhBa.getNumberphone().equals(phone)){
-                danhBaList.remove(danhBa);
-            } else System.out.println("Không thấy số điện thoại trên");
-            break;
+        for (int i=0;i<danhBaList.size();i++){
+            if (danhBaList.get(i).getNumberphone().equals(phone)){
+                index=i;
+                danhBaList.remove(i);
+            }
         }
+        if (index==-1){
+            System.out.println("Không thấy số điện thoại trên");
+        }
+        return index;
     }
     //tìm kiếm
-    public void findNumberphone(){
+    public int findNumberphone(){
+        int index=-1;
         Scanner scanner=new Scanner(System.in);
         System.out.println("Nhập số điện thoại mà bạn muốn tìm kiếm: ");
         String phone=scanner.nextLine();
-        for (DanhBa danhBa:danhBaList){
-            if (danhBa.getNumberphone().equals(phone)){
-                danhBa.showInfo();
-            } else System.out.println("Không thấy số điện thoại trên");
+        for (int i=0;i<danhBaList.size();i++){
+            if (danhBaList.get(i).getNumberphone().equals(phone)){
+                danhBaList.get(i).showInfo();
+            }
         }
+        if (index==-1){
+            System.out.println("Không thấy số điện thoại trên");
+        }
+        return index;
     }
     //ghi danh bạ
     public void writeDanhba(){
